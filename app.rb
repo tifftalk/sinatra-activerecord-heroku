@@ -1,7 +1,11 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require './config/environments' #database configuration
 require './models/model'        #Model class
+
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database:  'db/development.sqlite3'
+)
 
 get '/' do
 	erb :index
